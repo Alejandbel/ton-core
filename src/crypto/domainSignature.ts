@@ -14,7 +14,7 @@ export function signatureDomainHash(domain: SignatureDomain) {
         case "l2": {
             const tl = Buffer.alloc(8);
             tl.writeInt32LE(signatureDomainL2Tag);
-            tl.writeInt32LE(domain.globalId);
+            tl.writeInt32LE(domain.globalId, 4);
             return sha256_sync(tl);
         }
         default:
